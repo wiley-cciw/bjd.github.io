@@ -13,19 +13,20 @@
         .info-table {width:100%; border-collapse:collapse; margin:20px 40px; font-size:15px;}
         .info-table td {padding:14px 20px; border:1px solid #ddd;}
         .info-table td:first-child {background:#f5f5f5; font-weight:500; width:140px;}
-        .detail-title {background:#9c2a6e; color:white; padding:18px 40px; font-size:19px; font-weight:700; margin:0;}
-        .quote-table {width:100%; border-collapse:collapse; margin:0 40px 30px; table-layout:fixed; font-size:15px;}
+        .detail-title {background:#9c2a6e; color:white; padding:18px 40px; font-size:19px; font-weight:700;}
+        .table-wrapper {padding:0 40px;} /* ← 关键：统一左右留白 */
+        .quote-table {width:100%; border-collapse:collapse; margin:0; table-layout:fixed; font-size:15px;}
         .quote-table th {background:#9c2a6e; color:white; padding:15px; text-align:center;}
-        .quote-table td {padding:16px 15px; border-bottom:1px solid #eee; vertical-align:top;}
-        .section-header {background:#ff8c00; color:white; font-weight:700; padding:18px 15px !important; font-size:16px;}
-        .col1 {width:70px;}
-        .col2 {width:190px;}
-        .col3 {width:auto;}
-        .col4 {width:80px;}
+        .quote-table td {padding:16px 12px; border-bottom:1px solid #eee; vertical-align:top;}
+        .section-header {background:#ff8c00; color:white; font-weight:700; padding:18px 12px !important; font-size:16px;}
+        .col1 {width:65px;}   /* 序号 */
+        .col2 {width:185px;}  /* 服务分类 */
+        .col3 {width:auto;}   /* 服务内容 - 自动扩展 */
+        .col4 {width:85px;}   /* 包含 - 留空间不挤 */
         .check {color:#0066cc; font-size:22px; font-weight:bold; text-align:center;}
         .total {background:#006600; color:white; padding:28px 40px; font-size:26px; font-weight:700; text-align:right;}
         .remarks {margin:0 40px 40px; padding:30px; background:#f9f9f9; border-left:6px solid #0066cc; font-size:14.5px;}
-        @media (max-width:768px) {.quote-table td {padding:12px 10px; font-size:14px;}}
+        @media (max-width:768px) {.table-wrapper {padding:0 20px;} .quote-table td {padding:12px 8px; font-size:14px;}}
     </style>
 </head>
 <body>
@@ -38,51 +39,51 @@
         <tr><td>币种</td><td>人民币（CNY）</td><td>项目总价</td><td style="color:#006600;font-weight:700;">¥4,000</td></tr>
     </table>
 
-    <!-- 去掉左侧白块的完整紫色标题 -->
     <div class="detail-title">报价明细</div>
 
-    <table class="quote-table">
-        <thead>
-            <tr>
-                <th class="col1">序号</th>
-                <th class="col2">服务分类</th>
-                <th class="col3">服务内容</th>
-                <th class="col4">包含</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td colspan="4" class="section-header">A. 项目启动与需求确认　（¥500）</td></tr>
-            <tr><td class="col1">1</td><td class="col2">A. 项目启动与需求</td><td class="col3">需求梳理 & 仿站范围确认（首页、体验详情页、列表页、关于页、联系页）</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">2</td><td class="col2">A. 项目启动与需求</td><td class="col3">站点结构/URL 规划 + UX流程图及UI样式确认</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">3</td><td class="col2">A. 项目启动与需求</td><td class="col3">与客户沟通确认所需文字、图片等内容素材</td><td class="col4 check">✓</td></tr>
+    <div class="table-wrapper">
+        <table class="quote-table">
+            <thead>
+                <tr>
+                    <th class="col1">序号</th>
+                    <th class="col2">服务分类</th>
+                    <th class="col3">服务内容</th>
+                    <th class="col4">包含</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4" class="section-header">A. 项目启动与需求确认　（¥500）</td></tr>
+                <tr><td class="col1">1</td><td class="col2">A. 项目启动与需求</td><td class="col3">需求梳理 & 仿站范围确认（首页、体验详情页、列表页、关于页、联系页）</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">2</td><td class="col2">A. 项目启动与需求</td><td class="col3">站点结构/URL 规划 + UX流程图及UI样式确认</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">3</td><td class="col2">A. 项目启动与需求</td><td class="col3">与客户沟通确认所需文字、图片等内容素材</td><td class="col4 check">✓</td></tr>
 
-            <tr><td colspan="4" class="section-header">B. 网站设计（UI/UX仿站）　（¥1,200）</td></tr>
-            <tr><td class="col1">4</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">首页设计（横幅轮播图、导航栏、体验列表展示）</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">5</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">体验详情页设计（完整模仿 Untold Japan Floating Ryokan Experience 页面布局与氛围）</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">6</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">体验列表页设计（多个体验卡片展示布局）</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">7</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">关于我们页 & 联系页设计 + 全站响应式适配（手机/平板/桌面）</td><td class="col4 check">✓</td></tr>
+                <tr><td colspan="4" class="section-header">B. 网站设计（UI/UX仿站）　（¥1,200）</td></tr>
+                <tr><td class="col1">4</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">首页设计（横幅轮播图、导航栏、体验列表展示）</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">5</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">体验详情页设计（完整模仿 Untold Japan Floating Ryokan Experience 页面布局与氛围）</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">6</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">体验列表页设计（多个体验卡片展示布局）</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">7</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">关于我们页 & 联系页设计 + 全站响应式适配（手机/平板/桌面）</td><td class="col4 check">✓</td></tr>
 
-            <tr><td colspan="4" class="section-header">C. 前端开发与实现　（¥1,500）</td></tr>
-            <tr><td class="col1">8</td><td class="col2">C. 前端开发</td><td class="col3">HTML/CSS/JS 开发，实现页面布局与动态效果</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">9</td><td class="col2">C. 前端开发</td><td class="col3">图片懒加载 + 光箱（Lightbox）查看效果</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">10</td><td class="col2">C. 前端开发</td><td class="col3">导航栏、页脚等交互组件开发</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">11</td><td class="col2">C. 前端开发</td><td class="col3">全站响应式优化，确保多设备完美适配</td><td class="col4 check">✓</td></tr>
+                <tr><td colspan="4" class="section-header">C. 前端开发与实现　（¥1,500）</td></tr>
+                <tr><td class="col1">8</td><td class="col2">C. 前端开发</td><td class="col3">HTML/CSS/JS 开发，实现页面布局与动态效果</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">9</td><td class="col2">C. 前端开发</td><td class="col3">图片懒加载 + 光箱（Lightbox）查看效果</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">10</td><td class="col2">C. 前端开发</td><td class="col3">导航栏、页脚等交互组件开发</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">11</td><td class="col2">C. 前端开发</td><td class="col3">全站响应式优化，确保多设备完美适配</td><td class="col4 check">✓</td></tr>
 
-            <tr><td colspan="4" class="section-header">D. CMS集成与后台配置　（¥500）</td></tr>
-            <tr><td class="col1">12</td><td class="col2">D. 内容系统 CMS</td><td class="col3">选择并设置 CMS 平台（WordPress 或 Webflow）</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">13</td><td class="col2">D. 内容系统 CMS</td><td class="col3">后台内容管理配置（体验描述、图片、价格可自行更新）</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">14</td><td class="col2">D. 内容系统 CMS</td><td class="col3">联系表单与数据收集系统配置</td><td class="col4 check">✓</td></tr>
+                <tr><td colspan="4" class="section-header">D. CMS集成与后台配置　（¥500）</td></tr>
+                <tr><td class="col1">12</td><td class="col2">D. 内容系统 CMS</td><td class="col3">选择并设置 CMS 平台（WordPress 或 Webflow）</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">13</td><td class="col2">D. 内容系统 CMS</td><td class="col3">后台内容管理配置（体验描述、图片、价格可自行更新）</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">14</td><td class="col2">D. 内容系统 CMS</td><td class="col3">联系表单与数据收集系统配置</td><td class="col4 check">✓</td></tr>
 
-            <tr><td colspan="4" class="section-header">F. 测试与上线交付　（¥300）</td></tr>
-            <tr><td class="col1">15</td><td class="col2">F. 基础测试与上线</td><td class="col3">跨浏览器兼容性测试 + 表单/链接功能测试</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">16</td><td class="col2">F. 基础测试与上线</td><td class="col3">SSL证书安装 + 基础SEO设置</td><td class="col4 check">✓</td></tr>
-            <tr><td class="col1">17</td><td class="col2">F. 基础测试与上线</td><td class="col3">网站部署上线协助</td><td class="col4 check">✓</td></tr>
-        </tbody>
-    </table>
+                <tr><td colspan="4" class="section-header">F. 测试与上线交付　（¥300）</td></tr>
+                <tr><td class="col1">15</td><td class="col2">F. 基础测试与上线</td><td class="col3">跨浏览器兼容性测试 + 表单/链接功能测试</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">16</td><td class="col2">F. 基础测试与上线</td><td class="col3">SSL证书安装 + 基础SEO设置</td><td class="col4 check">✓</td></tr>
+                <tr><td class="col1">17</td><td class="col2">F. 基础测试与上线</td><td class="col3">网站部署上线协助</td><td class="col4 check">✓</td></tr>
+            </tbody>
+        </table>
+    </div>
 
     <div class="total">项目总价　¥4,000 CNY</div>
 
-    <!-- 可选服务和备注保持不变，但间距已优化 -->
     <div style="margin:0 40px 30px;">
         <h3 style="color:#0066cc;border-bottom:2px solid #0066cc;padding-bottom:10px;">可选附加服务（按需加价）</h3>
         <table style="width:100%;border-collapse:collapse;">
