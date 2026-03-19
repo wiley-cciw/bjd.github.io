@@ -3,106 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站开发项目报价单 - 模仿 Untold Japan Floating Ryokan Experience</title>
+    <title>定制旅游独立站开发报价单</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
-        body {font-family: 'Noto Sans SC', sans-serif; margin:0; padding:20px; background:#f8f9fa;}
-        .container {max-width:1000px; margin:auto; background:white; box-shadow:0 10px 30px rgba(0,0,0,0.1); overflow:hidden;}
-        .header {background:#0066cc; color:white; padding:35px; text-align:center;}
-        .header h1 {margin:0; font-size:28px; font-weight:700;}
-        .info-table {width:100%; border-collapse:collapse; margin:20px 40px; font-size:15px;}
-        .info-table td {padding:14px 20px; border:1px solid #ddd;}
-        .info-table td:first-child {background:#f5f5f5; font-weight:500; width:140px;}
-        .detail-title {background:#9c2a6e; color:white; padding:18px 40px; font-size:19px; font-weight:700;}
-        .table-wrapper {padding:0 40px;} /* ← 关键：统一左右留白 */
-        .quote-table {width:100%; border-collapse:collapse; margin:0; table-layout:fixed; font-size:15px;}
-        .quote-table th {background:#9c2a6e; color:white; padding:15px; text-align:center;}
-        .quote-table td {padding:16px 12px; border-bottom:1px solid #eee; vertical-align:top;}
-        .section-header {background:#ff8c00; color:white; font-weight:700; padding:18px 12px !important; font-size:16px;}
-        .col1 {width:65px;}   /* 序号 */
-        .col2 {width:185px;}  /* 服务分类 */
-        .col3 {width:auto;}   /* 服务内容 - 自动扩展 */
-        .col4 {width:85px;}   /* 包含 - 留空间不挤 */
-        .check {color:#0066cc; font-size:22px; font-weight:bold; text-align:center;}
-        .total {background:#006600; color:white; padding:28px 40px; font-size:26px; font-weight:700; text-align:right;}
-        .remarks {margin:0 40px 40px; padding:30px; background:#f9f9f9; border-left:6px solid #0066cc; font-size:14.5px;}
-        @media (max-width:768px) {.table-wrapper {padding:0 20px;} .quote-table td {padding:12px 8px; font-size:14px;}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", "思源黑体", sans-serif;
+        }
+        body {
+            background-color: #F8F6F2;
+            color: #2D2A26;
+            line-height: 1.6;
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #2D2A26;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .header-card-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .header-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .header-card table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .header-card td {
+            padding: 6px 0;
+        }
+        .header-card td:first-child {
+            font-weight: 600;
+            width: 35%;
+            color: #2D2A26;
+        }
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #B48C5E;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        th {
+            background-color: #2D2A26;
+            color: #fff;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f0eee9;
+        }
+        .module-title {
+            background-color: #B48C5E;
+            color: #fff;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 10px 12px;
+        }
+        .check-icon {
+            color: #B48C5E;
+            font-weight: 700;
+            text-align: center;
+        }
+        .price-col {
+            font-weight: 600;
+            text-align: right;
+        }
+        .remark-wrap {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .remark-wrap h3 {
+            margin-bottom: 15px;
+            color: #2D2A26;
+        }
+        .remark-wrap p {
+            margin-bottom: 8px;
+        }
+        @media (max-width: 768px) {
+            .header-card-wrap {
+                grid-template-columns: 1fr;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header"><h1>网站开发项目报价单</h1></div>
+    <h1>网站开发项目报价单</h1>
 
-    <table class="info-table">
-        <tr><td>报价日期</td><td>2026年03月19日</td><td>项目名称</td><td>模仿 Untold Japan 的 Floating Ryokan Experience 体验网站开发项目</td></tr>
-        <tr><td>客户</td><td>万总定制旅游独立站</td><td>建站类型</td><td>Shopify</td></tr>
-        <tr><td>币种</td><td>人民币（CNY）</td><td>项目总价</td><td style="color:#006600;font-weight:700;">¥4,000</td></tr>
+    <!-- 头部信息卡片 -->
+    <div class="header-card-wrap">
+        <div class="header-card">
+            <table>
+                <tr>
+                    <td>报价日期</td>
+                    <td>2026年03月19日</td>
+                </tr>
+                <tr>
+                    <td>项目名称</td>
+                    <td>模仿 Untold Japan 的 Floating Ryokan Experience 体验网站开发</td>
+                </tr>
+                <tr>
+                    <td>客户</td>
+                    <td>万总定制旅游独立站</td>
+                </tr>
+                <tr>
+                    <td>建站类型</td>
+                    <td>Shopify 独立站</td>
+                </tr>
+            </table>
+        </div>
+        <div class="header-card">
+            <table>
+                <tr>
+                    <td>币种</td>
+                    <td>人民币（CNY）</td>
+                </tr>
+                <tr>
+                    <td>项目总价</td>
+                    <td class="total-price">¥4,000</td>
+                </tr>
+                <tr>
+                    <td>报价有效期</td>
+                    <td>自出具之日起30天内有效</td>
+                </tr>
+                <tr>
+                    <td>核心售后</td>
+                    <td>交付后1年免费技术支持与维护</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 报价明细表格 -->
+    <h3 style="margin-bottom: 15px;">一、报价明细</h3>
+    <table>
+        <thead>
+            <tr>
+                <th width="6%">序号</th>
+                <th width="20%">服务分类</th>
+                <th width="64%">服务内容</th>
+                <th width="10%">包含</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- A模块 -->
+            <tr>
+                <td colspan="4" class="module-title">A. 项目启动与需求确认 （¥500）</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>A. 项目启动与需求</td>
+                <td>需求梳理 & 仿站范围确认（首页、体验详情页、列表页、关于页、联系页）</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>A. 项目启动与需求</td>
+                <td>站点结构/URL 规划 + UX流程图及UI样式确认</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>A. 项目启动与需求</td>
+                <td>与客户沟通确认所需文字、图片等内容素材</td>
+                <td class="check-icon">✓</td>
+            </tr>
+
+            <!-- B模块 -->
+            <tr>
+                <td colspan="4" class="module-title">B. 网站设计（UI/UX仿站） （¥1,200）</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>B. 全站 UI 仿站</td>
+                <td>首页设计（横幅轮播图、导航栏、体验列表展示）</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>B. 全站 UI 仿站</td>
+                <td>体验详情页设计（完整模仿 Untold Japan Floating Ryokan Experience 页面布局与氛围）</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>B. 全站 UI 仿站</td>
+                <td>体验列表页设计（多个体验卡片展示布局）</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>B. 全站 UI 仿站</td>
+                <td>关于我们页 & 联系页设计 + 全站响应式适配（手机/平板/桌面）</td>
+                <td class="check-icon">✓</td>
+            </tr>
+
+            <!-- C模块 -->
+            <tr>
+                <td colspan="4" class="module-title">C. 前端开发与实现 （¥1,500）</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>C. 前端开发</td>
+                <td>HTML/CSS/JS 开发，实现页面布局与动态效果，1:1还原设计稿</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>C. 前端开发</td>
+                <td>图片懒加载 + 光箱（Lightbox）高清图片查看效果</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>C. 前端开发</td>
+                <td>导航栏、页脚等交互组件开发，保证操作流畅度</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>C. 前端开发</td>
+                <td>全站响应式优化，确保多设备完美适配</td>
+                <td class="check-icon">✓</td>
+            </tr>
+
+            <!-- D模块 -->
+            <tr>
+                <td colspan="4" class="module-title">D. Shopify 后台配置与功能集成 （¥500）</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>D. Shopify 后台配置</td>
+                <td>Shopify主题环境搭建与基础配置，匹配仿站设计风格</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>D. Shopify 后台配置</td>
+                <td>后台体验项目管理配置：支持体验描述、价格、图片等内容自主更新</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>D. Shopify 后台配置</td>
+                <td>联系表单与数据收集系统配置，对接Shopify后台消息系统</td>
+                <td class="check-icon">✓</td>
+            </tr>
+
+            <!-- E模块 -->
+            <tr>
+                <td colspan="4" class="module-title">E. 测试与上线交付 （¥300）</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>E. 基础测试与上线</td>
+                <td>跨浏览器兼容性测试 + 表单/链接全功能测试</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>E. 基础测试与上线</td>
+                <td>SSL证书安装协助 + 基础SEO设置</td>
+                <td class="check-icon">✓</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>E. 基础测试与上线</td>
+                <td>Shopify网站部署上线全流程协助</td>
+                <td class="check-icon">✓</td>
+            </tr>
+
+            <!-- 总价汇总 -->
+            <tr>
+                <td colspan="3" style="text-align: right; font-weight: 700; font-size: 18px;">项目总价</td>
+                <td style="font-weight: 700; font-size: 18px; color: #B48C5E;">¥4,000</td>
+            </tr>
+        </tbody>
     </table>
 
-    <div class="detail-title">报价明细</div>
+    <!-- 可选附加服务 -->
+    <h3 style="margin-bottom: 15px;">二、可选附加服务（按需加价）</h3>
+    <table>
+        <thead>
+            <tr>
+                <th width="60%">附加服务</th>
+                <th width="40%" class="price-col">费用</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>内容撰写与图片编辑（全页面文案+高清图片精修）</td>
+                <td class="price-col">+ ¥1,000 – ¥2,000</td>
+            </tr>
+            <tr>
+                <td>高级SEO优化（关键词布局+收录优化+流量提升）</td>
+                <td class="price-col">+ ¥800</td>
+            </tr>
+            <tr>
+                <td>自定义预约/支付系统（档期预约+在线支付+订单管理）</td>
+                <td class="price-col">+ ¥2,000 – ¥4,000</td>
+            </tr>
+            <tr>
+                <td>高级动画与特效（沉浸式滚动动画+日式过渡动效）</td>
+                <td class="price-col">+ ¥1,000</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <div class="table-wrapper">
-        <table class="quote-table">
-            <thead>
-                <tr>
-                    <th class="col1">序号</th>
-                    <th class="col2">服务分类</th>
-                    <th class="col3">服务内容</th>
-                    <th class="col4">包含</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td colspan="4" class="section-header">A. 项目启动与需求确认　（¥500）</td></tr>
-                <tr><td class="col1">1</td><td class="col2">A. 项目启动与需求</td><td class="col3">需求梳理 & 仿站范围确认（首页、体验详情页、列表页、关于页、联系页）</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">2</td><td class="col2">A. 项目启动与需求</td><td class="col3">站点结构/URL 规划 + UX流程图及UI样式确认</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">3</td><td class="col2">A. 项目启动与需求</td><td class="col3">与客户沟通确认所需文字、图片等内容素材</td><td class="col4 check">✓</td></tr>
-
-                <tr><td colspan="4" class="section-header">B. 网站设计（UI/UX仿站）　（¥1,200）</td></tr>
-                <tr><td class="col1">4</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">首页设计（横幅轮播图、导航栏、体验列表展示）</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">5</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">体验详情页设计（完整模仿 Untold Japan Floating Ryokan Experience 页面布局与氛围）</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">6</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">体验列表页设计（多个体验卡片展示布局）</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">7</td><td class="col2">B. 全站 UI 仿站</td><td class="col3">关于我们页 & 联系页设计 + 全站响应式适配（手机/平板/桌面）</td><td class="col4 check">✓</td></tr>
-
-                <tr><td colspan="4" class="section-header">C. 前端开发与实现　（¥1,500）</td></tr>
-                <tr><td class="col1">8</td><td class="col2">C. 前端开发</td><td class="col3">HTML/CSS/JS 开发，实现页面布局与动态效果</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">9</td><td class="col2">C. 前端开发</td><td class="col3">图片懒加载 + 光箱（Lightbox）查看效果</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">10</td><td class="col2">C. 前端开发</td><td class="col3">导航栏、页脚等交互组件开发</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">11</td><td class="col2">C. 前端开发</td><td class="col3">全站响应式优化，确保多设备完美适配</td><td class="col4 check">✓</td></tr>
-
-                <tr><td colspan="4" class="section-header">D. CMS集成与后台配置　（¥500）</td></tr>
-                <tr><td class="col1">12</td><td class="col2">D. 内容系统 CMS</td><td class="col3">选择并设置 CMS 平台（WordPress 或 Webflow）</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">13</td><td class="col2">D. 内容系统 CMS</td><td class="col3">后台内容管理配置（体验描述、图片、价格可自行更新）</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">14</td><td class="col2">D. 内容系统 CMS</td><td class="col3">联系表单与数据收集系统配置</td><td class="col4 check">✓</td></tr>
-
-                <tr><td colspan="4" class="section-header">F. 测试与上线交付　（¥300）</td></tr>
-                <tr><td class="col1">15</td><td class="col2">F. 基础测试与上线</td><td class="col3">跨浏览器兼容性测试 + 表单/链接功能测试</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">16</td><td class="col2">F. 基础测试与上线</td><td class="col3">SSL证书安装 + 基础SEO设置</td><td class="col4 check">✓</td></tr>
-                <tr><td class="col1">17</td><td class="col2">F. 基础测试与上线</td><td class="col3">网站部署上线协助</td><td class="col4 check">✓</td></tr>
-            </tbody>
-        </table>
+    <!-- 项目说明与备注 -->
+    <div class="remark-wrap">
+        <h3>三、项目说明与备注</h3>
+        <p>1. 报价有效期：自报价出具之日起30天内有效，超期需重新核定报价。</p>
+        <p>2. 项目周期：预计15-20个工作日（预付款到账并确认需求、核心素材交付完成后开始计算）。</p>
+        <p>3. 服务范围：包含规划、设计、开发、Shopify后台配置、测试、上线全流程服务；不含Shopify平台会员费、付费主题/插件、域名和服务器等第三方费用，该部分费用由客户自行承担。</p>
+        <p>4. 售后支持：项目交付后提供1年免费技术支持和基础维护服务，包含BUG修复、基础功能调整、后台使用指导。</p>
+        <p>5. 备注：本报价严格基于模仿 Untold Japan 的 Floating Ryokan Experience 页面风格开发，项目预计包含6-8页内容；客户需提供文字内容和图片素材，或选择付费内容服务。</p>
     </div>
-
-    <div class="total">项目总价　¥4,000 CNY</div>
-
-    <div style="margin:0 40px 30px;">
-        <h3 style="color:#0066cc;border-bottom:2px solid #0066cc;padding-bottom:10px;">可选附加服务（按需加价）</h3>
-        <table style="width:100%;border-collapse:collapse;">
-            <tr><th style="background:#f5f5f5;border:1px solid #ddd;padding:12px;">附加服务</th><th style="background:#f5f5f5;border:1px solid #ddd;padding:12px;">费用</th></tr>
-            <tr><td style="border:1px solid #ddd;padding:12px;">内容撰写与图片编辑</td><td style="border:1px solid #ddd;padding:12px;">+ ¥1,000 – ¥2,000</td></tr>
-            <tr><td style="border:1px solid #ddd;padding:12px;">高级SEO优化</td><td style="border:1px solid #ddd;padding:12px;">+ ¥800</td></tr>
-            <tr><td style="border:1px solid #ddd;padding:12px;">自定义预约/支付系统</td><td style="border:1px solid #ddd;padding:12px;">+ ¥2,000 – ¥4,000</td></tr>
-            <tr><td style="border:1px solid #ddd;padding:12px;">高级动画与特效</td><td style="border:1px solid #ddd;padding:12px;">+ ¥1,000</td></tr>
-        </table>
-    </div>
-
-    <div class="remarks">
-        <strong>项目说明：</strong><br>
-        1. 报价有效期：自报价日期起至本月底有效。<br>
-        2. 项目周期：预计25-35个工作日（预付款到账并确认需求后开始计算）。<br>
-        3. 服务范围：包含规划、设计、开发、CMS、测试、上线全流程，不含域名和服务器费用（Shopify端口客户自行选择会员和模版费用）。<br>
-        4. 售后支持：项目交付后提供1年免费技术支持和维护服务。<br><br>
-        <strong>备注：</strong>本报价严格基于模仿 Untold Japan 的 Floating Ryokan Experience 页面风格，项目预计包含6-8页内容。客户需提供文字内容和图片素材（或选择付费内容服务）。
-    </div>
-</div>
 </body>
 </html>
